@@ -2,6 +2,7 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 import java.util.TreeSet;
 
 public class Graph<T> {
@@ -146,4 +147,34 @@ public class Graph<T> {
         }
         return matrix;
     }   
+	/**
+	 * Retorna la ArrayList con los vertices.
+	 * @return
+	 */
+	public ArrayList<Vertex<T>> DFS(int graph[][], Vertex<T> v) 
+    { 
+		ArrayList<Vertex<T>> result = new ArrayList<Vertex<T>>();
+		Stack<Vertex<T>> stack = new Stack<>();
+		stack.push(v);
+		
+		while(!stack.empty()) {
+			v = stack.pop();
+			
+			if (v.isVisited())
+				continue;
+			
+			v.setVisited(true);
+			result.add(v);
+			
+			ArrayList<Edge<T>> neighbors = v.getNeighbors();
+			for (int i=neighbors.size() - 1; i>=0; i--) {
+				
+				Vertex<T> u = neighbors.get(i).getVertex();
+				if (!u.isVisited()) {
+					stack.push(u);
+				}
+			}
+		}
+		return result;
+    } 
 }

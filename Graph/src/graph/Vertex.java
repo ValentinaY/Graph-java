@@ -6,6 +6,7 @@ public class Vertex <T>{
 
 	private T data;	
 	private ArrayList<Edge<T>> neighbors;
+	private boolean visited;
 
 	public Vertex(T data){
 		neighbors = new ArrayList<Edge<T>>();
@@ -43,5 +44,13 @@ public class Vertex <T>{
 			return "null";
 		}
 		return this.data.toString();
+	}
+
+	public boolean isVisited() {
+		return visited;
+	}
+
+	public void setVisited(boolean visited) {
+		this.visited = visited;
 	}
 }
