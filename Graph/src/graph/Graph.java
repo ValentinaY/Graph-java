@@ -151,7 +151,7 @@ public class Graph<T> {
 	 * Retorna la ArrayList con los vertices.
 	 * @return
 	 */
-	public ArrayList<Vertex<T>> DFS(int graph[][], Vertex<T> v) 
+	public ArrayList<Vertex<T>> DFS(Vertex<T> v) 
     { 
 		ArrayList<Vertex<T>> result = new ArrayList<Vertex<T>>();
 		Stack<Vertex<T>> stack = new Stack<>();
