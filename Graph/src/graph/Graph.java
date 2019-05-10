@@ -178,4 +178,30 @@ public class Graph<T> {
 		}
 		return result;
     } 
+
+	public  int[] BellmanFord(int graph[][], Vertex<T> src) 
+	{ 
+		int V = getnVertices();
+		int dist[] = new int[V]; 
+		HashMap<String, Integer> values = getVindexes();
+
+		for (int i=0; i<V; ++i) 
+			dist[i] = Integer.MAX_VALUE; 
+
+		dist[values.get(src.toString())] = 0;  
+
+		ArrayList<Vertex<T>> vertices = getVertices();
+		for (Vertex<T> v : vertices) {
+			Vertex<T> init = v;
+			ArrayList<Edge<T>> edges = v.getNeighbors();
+			for (Edge<T> edge : edges) {
+				Vertex<T> fin = edge.getVertex();
+				int cost = edge.getCost();
+				if(dist[values.get(init.toString())]!=Integer.MAX_VALUE && dist[values.get(init.toString())]+cost<dist[values.get(fin.toString())]) 
+					dist[values.get(fin.toString())]=dist[values.get(init.toString())]+cost; 
+			}
+		}
+
+		return dist; 
+	} 
 }
