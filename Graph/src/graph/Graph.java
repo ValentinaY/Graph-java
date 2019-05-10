@@ -58,12 +58,13 @@ public class Graph<T> {
 					costs.put(id, Math.min(cost+v.getCost(), costs.get(id)));					
 				}
 			}
+			if(costs.containsKey(b.toString())) break;
 			Edge<T> edge = tree.pollFirst();
 			actual = edge.getVertex();
 			cost = edge.getCost()+costs.get(actual.toString());
 			ves=actual.getNeighbors();
 			cont++;
-		} while(cont<getnVertices()-1);
+		} while(cont<getnVertices() && !tree.isEmpty());
 		return costs.getOrDefault(b.toString(), -1.0);
 	}
 	
@@ -103,8 +104,7 @@ public class Graph<T> {
 	 * Retorna la matriz de adyacencia en un grafo dirigido.
 	 * @return
 	 */
-	public double[][] getMadj_d() {
-		
+	public double[][] getMadj_d() {	
 		int n = this.getnVertices();
 		
 		double[][] matrix = new double [n][n];
@@ -145,7 +145,9 @@ public class Graph<T> {
             } 
         }
         return matrix;
-    }   
+    }
+	
+	
 	/**
 	 * Retorna la ArrayList con los vertices.
 	 * @return
