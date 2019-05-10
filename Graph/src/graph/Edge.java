@@ -16,6 +16,7 @@ public class Edge<T> implements Comparable<T>{
 	public Vertex<T> getVertex() {
 		return vertex;
 	}
+	
 	public void setVertex(Vertex<T> data) {
 		this.vertex = data;
 	}

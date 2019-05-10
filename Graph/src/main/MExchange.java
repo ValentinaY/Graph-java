@@ -27,6 +27,7 @@ public class MExchange {
 		Vertex<String> gbt = new Vertex<String>("gbt");
 		Vertex<String> usd = new Vertex<String>("usd");
 		Vertex<String> nzd = new Vertex<String>("nzd");	
+		
 		graph.addVertex(eur);
 		graph.addVertex(mxn);
 		graph.addVertex(cad);

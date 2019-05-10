@@ -30,6 +30,7 @@ public class Graph<T> {
 		return positions;
 	}
 	
+	
 	public int getnVertices() {
 		return vertices.size();
 	}

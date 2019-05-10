@@ -34,6 +34,7 @@ public class PTB {
 		Edge<String> aPajaBurro_1 = new Edge<String>(paja_burro, 1);
 //		graph.addData(paja, aPajaTigre_1);
 //		graph.addData(paja, aPajaBurro_1);
+	
 		Edge<String> aTigreBurro_2 = new Edge<String>(tigre_burro, 2);
 		Edge<String> aPajaBurro_2 = new Edge<String>(paja_burro, 2);
 //		graph.addData(burro, aTigreBurro_2);
