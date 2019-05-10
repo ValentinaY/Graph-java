@@ -7,15 +7,15 @@ import java.util.TreeSet;
 
 public class Graph<T> {
 
-	private HashMap<String, Vertex<T>> vertices;
+	private ArrayList<Vertex<T>> vertices;
 	private final int INF = 99999;
 	
 	public Graph() {
-		vertices = new HashMap<String, Vertex<T>>();
+		vertices = new ArrayList<Vertex<T>>();
 	}
 
 	public ArrayList<Vertex<T>> getVertices(){
-		return new ArrayList<Vertex<T>>(vertices.values());
+		return vertices;
 	}
 	
 	public HashMap<String, Integer> getVindexes(){
@@ -34,20 +34,18 @@ public class Graph<T> {
 		return vertices.size();
 	}
 	
-	public void addData(Vertex<T> v, Edge<T> e) {
-		vertices.putIfAbsent(v.toString(), v);
-		vertices.putIfAbsent(e.getVertex().toString(), e.getVertex());
-		v.add(e);
+	public void addVertex(Vertex<T> v) {
+		vertices.add(v);
 	}
 	
-	public int dijkstra(Vertex<T> a, Vertex<T> b) {
+	public double dijkstra(Vertex<T> a, Vertex<T> b) {
 		TreeSet<Edge<T>> tree = new TreeSet<Edge<T>>();
-		HashMap<String, Integer> costs = new HashMap<String, Integer>();
-		int cost = 0;
+		HashMap<String, Double> costs = new HashMap<String, Double>();
+		double cost = 0;
 		int cont = 0;
 		ArrayList<Edge<T>> ves = a.getNeighbors();
 		Vertex<T> actual = a;
-		costs.put(actual.toString(),0);
+		costs.put(actual.toString(),0.0);
 		do {
 			for (Edge<T> v : ves) {
 				String id=v.getVertex().toString();
@@ -65,18 +63,18 @@ public class Graph<T> {
 			ves=actual.getNeighbors();
 			cont++;
 		} while(cont<getnVertices()-1);
-		return costs.getOrDefault(b.toString(), -1);
+		return costs.getOrDefault(b.toString(), -1.0);
 	}
 	
 	/**
 	 * Retorna la matriz de adyacencia en un grafo no dirigido.
 	 * @return
 	 */
-	public int[][] getMadj_nd() {
+	public double[][] getMadj_nd() {
 		
 		int n = this.getnVertices();
 		
-		int[][] matrix = new int [n][n];
+		double[][] matrix = new double [n][n];
 		for (int i=0; i<n; i++) {
 			for (int j=0; j<n; j++) {
 				matrix[i][j] = INF;
@@ -104,11 +102,11 @@ public class Graph<T> {
 	 * Retorna la matriz de adyacencia en un grafo dirigido.
 	 * @return
 	 */
-	public int[][] getMadj_d() {
+	public double[][] getMadj_d() {
 		
 		int n = this.getnVertices();
 		
-		int[][] matrix = new int [n][n];
+		double[][] matrix = new double [n][n];
 		for (int i=0; i<n; i++) {
 			for (int j=0; j<n; j++) {
 				matrix[i][j] = INF;
@@ -130,9 +128,9 @@ public class Graph<T> {
 		return matrix;
 	}
 	
-	public int[][] floyd_warshall(int graph[][], int n) 
+	public double[][] floyd_warshall(double[][] graph, int n) 
     { 
-        int matrix[][] = new int[n][n]; 
+        double matrix[][] = new double[n][n]; 
         int i, j, k; 
         for (i=0; i<n; i++) 
             for (j=0; j<n; j++) 

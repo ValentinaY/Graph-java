@@ -1,12 +1,13 @@
 package graph;
 
 public class Edge<T> implements Comparable<T>{
-	private int cost;
+	private double cost;
 	private Vertex<T> vertex;
-	public Edge() {
+	public Edge(double cost) {
+		this.cost = cost;
 		// TODO Auto-generated constructor stub
 	}
-	public int getCost() {
+	public double getCost() {
 		return cost;
 	}
 	public void setCost(int cost) {
@@ -18,6 +19,12 @@ public class Edge<T> implements Comparable<T>{
 	public void setVertex(Vertex<T> data) {
 		this.vertex = data;
 	}
+	public Edge(Vertex<T> data, double cost) {
+		super();
+		this.cost = cost;
+		this.vertex = data;
+	}
+	
 	public Edge(Vertex<T> data, int cost) {
 		super();
 		this.cost = cost;
@@ -25,7 +32,7 @@ public class Edge<T> implements Comparable<T>{
 	}
 	
 	public String toString() {
-		return Integer.toString(this.cost)+vertex.toString();
+		return Double.toString(this.cost)+vertex.toString();
 	}
 	
 	@Override
